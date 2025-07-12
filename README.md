@@ -1,50 +1,65 @@
-# 📺 YouTube Studio Data Analytics
+# 📺 YouTube Studio Data Analytics - Modular Edition
 
-A comprehensive Python application for analyzing YouTube Studio data with interactive visualizations, machine learning predictions, and automated reporting.
+A comprehensive, modular Python application for analyzing YouTube Studio data with interactive visualizations, machine learning predictions, and automated reporting.
 
 ## 🚀 Features
 
 - **📊 Interactive Dashboards**: Web-based dashboards using Streamlit and Dash
-- **📈 Time Series Analysis**: Views, likes, and comments trends over time
+- **📈 Time Series Analysis**: Views, likes, and comments trends over time  
 - **🎯 Engagement Analytics**: Like rates, comment rates, and engagement patterns
 - **👥 Subscriber Insights**: Growth and decline analysis with detailed metrics
 - **🤖 ML Predictions**: Machine learning models to predict video performance
-- **📁 Export Reports**: Automated Excel and PDF report generation
+- **📁 Export Reports**: Automated Excel, JSON, and HTML report generation
 - **🔥 Correlation Analysis**: Performance correlation heatmaps
 - **📱 Responsive Design**: Works on desktop and mobile devices
+- **🏗️ Modular Architecture**: Professional code structure for maintainability
 
 ## 📋 Project Structure
 
 ```
 YouTubeStudioDataAnalytics/
-├── 📄 youtube_analytics.py          # Main analytics engine
-├── 🌐 streamlit_dashboard.py        # Streamlit web dashboard
-├── 🌐 dash_dashboard.py            # Dash web dashboard  
-├── 📓 youtube_analytics_notebook.ipynb # Jupyter notebook for analysis
-├── ⚙️ setup.py                     # Automated setup script
-├── 📊 videos.csv                   # Sample video data
-├── 👥 subscribers.csv              # Sample subscriber data
+├── 🎯 main.py                       # Main entry point with CLI
+├── � src/                          # Source code modules
+│   ├── 📊 analytics/                # Core analytics package
+│   │   ├── __init__.py             # Package initialization
+│   │   ├── core.py                 # Main YouTubeAnalytics class
+│   │   ├── data_loader.py          # Data loading and preprocessing
+│   │   ├── visualizations.py      # Chart generation with Plotly
+│   │   └── ml_predictor.py         # Machine learning models
+│   ├── 🌐 dashboards/              # Dashboard implementations
+│   │   ├── __init__.py             # Dashboard package init
+│   │   ├── streamlit_app.py        # Streamlit dashboard
+│   │   └── dash_app.py             # Dash dashboard
+│   └── �️ utils/                   # Utility modules
+│       ├── __init__.py             # Utils package init
+│       ├── config.py               # Configuration management
+│       ├── data_utils.py           # Data validation & statistics
+│       └── export_utils.py         # Export and reporting utilities
+├── 📁 data/                         # Data directory
+│   ├── sample/                     # Sample data files
+│   │   ├── videos.csv              # Sample video data
+│   │   └── subscribers.csv         # Sample subscriber data
+│   └── exports/                    # Generated reports and charts
+├── ⚙️ config/                      # Configuration files
+│   └── config.json                 # Default configuration
+├── 🧪 tests/                       # Test suite
+│   ├── __init__.py                 # Test package init
+│   └── test_imports.py             # Import tests
+├── 📓 notebooks/                   # Jupyter notebooks
+├── 📋 docs/                        # Documentation
 ├── 📦 requirements.txt             # Python dependencies
-├── ⚙️ config.ini                   # Configuration settings
 └── 📖 README.md                    # This file
 ```
 
 ## 🛠️ Quick Setup
 
-### Option 1: Automated Setup (Recommended)
+### Installation
 
 ```bash
 # Clone the repository
 git clone https://github.com/DuongCaoNhan/YouTubeStudioDataAnalytics.git
 cd YouTubeStudioDataAnalytics
 
-# Run automated setup
-python setup.py
-```
-
-### Option 2: Manual Setup
-
-```bash
 # Install dependencies
 pip install -r requirements.txt
 
@@ -77,10 +92,85 @@ Date, Subscribers Gained, Subscribers Lost, Net Subscribers
 
 ## 🚀 Usage Options
 
-### 1. 📊 Basic Analytics Script
+### 1. 🎯 Command Line Interface (NEW!)
 
 ```bash
-python youtube_analytics.py
+# Run complete analytics pipeline
+python main.py --analysis
+
+# Start interactive Streamlit dashboard
+python main.py --streamlit
+
+# Start professional Dash dashboard  
+python main.py --dash
+
+# Quick data analysis only
+python main.py --data-only
+
+# ML prediction demonstration
+python main.py --ml-demo
+
+# Interactive mode (default)
+python main.py
+```
+
+### 2. 📊 Programmatic Usage
+
+```python
+from src.analytics import YouTubeAnalytics
+
+# Initialize with your data
+analytics = YouTubeAnalytics(
+    videos_file="data/sample/videos.csv",
+    subscribers_file="data/sample/subscribers.csv"
+)
+
+# Run complete analysis
+results = analytics.run_complete_analysis()
+
+# Generate specific visualizations
+charts = analytics.create_all_visualizations()
+
+# Train ML models
+ml_results = analytics.train_prediction_model()
+
+# Export results
+analytics.export_results("output/")
+```
+
+### 4. 📁 Generated Outputs
+
+After running analysis, you'll find:
+
+```
+data/exports/
+├── 📊 youtube_analytics_report.xlsx    # Excel report with multiple sheets
+├── 📈 charts/                         # Interactive HTML charts
+│   ├── views_timeline.html
+│   ├── engagement_comparison.html
+│   ├── correlation_heatmap.html
+│   └── ... (10 chart files)
+├── 🤖 ml_model.joblib                 # Trained ML model
+├── 📄 analysis_results.json           # Complete results in JSON
+├── 📋 processed_videos.csv            # Processed video data
+└── 📋 processed_subscribers.csv       # Processed subscriber data
+```
+
+### 5. 🔧 Configuration
+
+Customize behavior via `config/config.json`:
+
+```json
+{
+  "ml": {
+    "default_model_type": "linear",
+    "hyperparameter_tuning": true
+  },
+  "visualization": {
+    "default_theme": "plotly_white",
+    "color_palette": ["#1f77b4", "#ff7f0e", "..."]
+  }
+}
 ```
 
 **Features:**
